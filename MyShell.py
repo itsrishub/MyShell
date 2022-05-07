@@ -2,13 +2,13 @@ import os
 import getpass
 import subprocess
 
-def _execute(command):
+def execute(command):
     try:
         subprocess.run(command.split(" "))
     except:
         print(f"command not found: {command}")
 
-def _cd(path):
+def cd(path):
     try:
         os.chdir(os.path.abspath(path))
     except:
@@ -22,9 +22,9 @@ def main():
         if inp == "exit" or inp == "quit":
             break
         elif "cd " in inp:
-            _cd(inp.strip("cd "))
+            cd(inp.strip("cd "))
         else:
-            _execute(inp)
+            execute(inp)
 
 if __name__ == "__main__":
     main()
